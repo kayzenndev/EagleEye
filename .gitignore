@@ -1,0 +1,47 @@
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+.eagleeye/
+
+# Cache and Others
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.xml
+htmlcov/
+
+# Local Archives
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# envs
+.env
+.env.*
+!.env.example
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# Photos and Biometry local
+data/
+uploads/
+captures/
+faces/
+
+# Models
+models/
+*.pkl
+*.joblib
+*.log
+
