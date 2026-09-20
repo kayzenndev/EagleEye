@@ -34,7 +34,7 @@ Thumbs.db
 *.db-journal
 
 # Photos and Biometry local
-data/
+dados/
 uploads/
 captures/
 faces/
