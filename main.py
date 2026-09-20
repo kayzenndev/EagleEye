@@ -1,6 +1,7 @@
 from defs import functions
 from defs import colorir
 from banco import criar_tabela_pessoas
+from cadastro import cadastrar
 
 def main():
     try:
@@ -20,6 +21,7 @@ def main():
 
             if per_inic == 1:
                 functions.load_animation()
+                cadastrar()
 
             elif per_inic == 2:
                 functions.load_animation()
