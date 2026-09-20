@@ -2,6 +2,7 @@ from defs import functions
 from defs import colorir
 from banco import criar_tabela_pessoas
 from cadastro import cadastrar
+from reconhecimento import menu_identificacao
 
 def main():
     try:
@@ -11,11 +12,12 @@ def main():
 [02] - Identify Biometrics
 [00] - Exit
     """
-        functions.menu(options)
-
+        
         stop = 1
 
         while stop == 1:
+
+            functions.menu(options)
 
             per_inic = float(input(colorir.verdeNeon('Please, select an option >>> ')))
 
@@ -25,6 +27,7 @@ def main():
 
             elif per_inic == 2:
                 functions.load_animation()
+                menu_identificacao()
 
             elif per_inic == 0:
                 functions.exit_animation()

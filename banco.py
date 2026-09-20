@@ -30,6 +30,23 @@ def criar_tabela_pessoas():
         )
     """)
 
+    colunas_capturas = [
+        coluna[1]
+        for coluna in cursor.execute("PRAGMA table_info(capturas)")
+    ]
+
+    if "origem" not in colunas_capturas:
+        cursor.execute("""
+            ALTER TABLE capturas
+            ADD COLUMN origem TEXT NOT NULL DEFAULT 'camera'
+        """)
+
+    if "arquivo_origem" not in colunas_capturas:
+        cursor.execute("""
+            ALTER TABLE capturas
+            ADD COLUMN arquivo_origem TEXT
+        """)
+
     conexao.commit()
     conexao.close()
 
@@ -59,14 +76,29 @@ def buscar_pessoas():
 
     return pessoas
 
-def registrar_captura(pessoa_id, caminho_foto):
+def registrar_captura(
+    pessoa_id,
+    caminho_foto,
+    origem,
+    arquivo_origem=None
+):
     conexao = conectar_banco()
     cursor = conexao.cursor()
 
     cursor.execute("""
-        INSERT INTO capturas (pessoa_id, caminho_foto)
-        VALUES (?, ?)
-    """, (pessoa_id, caminho_foto))
+        INSERT INTO capturas (
+            pessoa_id,
+            caminho_foto,
+            origem,
+            arquivo_origem
+        )
+        VALUES (?, ?, ?, ?)
+    """, (
+        pessoa_id,
+        caminho_foto,
+        origem,
+        arquivo_origem
+    ))
 
     conexao.commit()
     conexao.close()
